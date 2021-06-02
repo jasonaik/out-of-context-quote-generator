@@ -5,9 +5,10 @@ from typing import Callable
 import random
 import os
 
+API_KEY = os.environ.get("API_KEY")
+
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "TopSecretKey12345"
-# app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 Bootstrap(app)
 
 # # Connect to Database
@@ -134,7 +135,7 @@ def patch_quote_author(quote_id):
 @app.route("/delete-quote/<quote_id>", methods=["DELETE"])
 def delete_quote(quote_id):
     api_key = request.args.get("api-key")
-    if api_key == "TopSecretAPIKey":
+    if api_key == API_KEY:
         quote = db.session.query(Quote).get(quote_id)
         if quote:
             db.session.delete(quote)
