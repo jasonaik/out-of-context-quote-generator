@@ -6,6 +6,8 @@ import random
 import os
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "TopSecretKey12345"
+# app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 
 # # Connect to Database
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL1", "sqlite:///quotes.db")
