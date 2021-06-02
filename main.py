@@ -28,7 +28,7 @@ db = MySQLAlchemy(app)
 # # Quote TABLE Configuration
 class Quote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    quote = db.Column(db.String(250), unique=True, nullable=False)
+    quote = db.Column(db.String(2500), unique=True, nullable=False)
     author = db.Column(db.String(250), nullable=False)
 
     def to_dict(self):
